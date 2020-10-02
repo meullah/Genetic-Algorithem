@@ -1,24 +1,28 @@
 import numpy as np
 def fitness(population):
     list = []
-    for c in population:
+    for i in population:
         grid = np.zeros((6, 6), dtype=int)
-        a = makeGrid(grid,c)
-        array = np.array(a)
+        temp1 = makeGrid(grid,i)
+        array = np.array(temp1)
         list += [np.sum(array)]
     return list
 def makeGrid(grid,array):
     for i in range(5):
-        temp = array[i]
-        grid[temp[0],temp[1]] = 1
-        if((temp[0]-1) >= 0): # up
-            grid[(temp[0]-1),temp[1]] = 1
-        if((temp[0]+1) <=5 ): # down
-            grid[(temp[0]+1),temp[1]]  =1
-        if ((temp[1]-1) >= 0):  # left
-            grid[temp[0],(temp[1]-1)] = 1
-        if ((temp[1]+1) <= 5):  # right
-            grid[temp[0],(temp[1]+1)] = 1
+        temp2 = array[i]
+        grid[temp2[0],temp2[1]] = 1
+        # up
+        if((temp2[0]-1) >= 0):
+            grid[(temp2[0]-1),temp2[1]] = 1
+        # down
+        if((temp2[0]+1) <=5 ): 
+            grid[(temp2[0]+1),temp2[1]]  =1
+        # left
+        if ((temp2[1]-1) >= 0):  
+            grid[temp2[0],(temp2[1]-1)] = 1
+        # right
+        if ((temp2[1]+1) <= 5):  
+            grid[temp2[0],(temp2[1]+1)] = 1
     return grid
 
 
